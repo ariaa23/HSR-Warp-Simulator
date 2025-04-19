@@ -59,10 +59,12 @@
 			{#each chars as { combat_type, name }}
 				<div class="char-group {name}">
 					<div class="name">
+						<!-- svelte-ignore element_invalid_self_closing_tag -->
 						<i class="hsr-{combat_type} icon-gradient {combat_type}" />
 						<span>{$t(name)}</span>
 					</div>
 					<div class="stars">
+						<!-- svelte-ignore element_invalid_self_closing_tag -->
 						{#each Array(5) as _} <i class="hsr-star" />{/each}
 					</div>
 				</div>
@@ -78,7 +80,7 @@
 						<span class="notice">i</span>
 						<img src={$assets['additional-reward.svg']} alt="Additional Rewards" />
 					</button>
-					<caption>{$t('warp.additional')}</caption>
+					<span class="additional-label">{$t('warp.additional')}</span>
 				</div>
 			{/if}
 		</div>

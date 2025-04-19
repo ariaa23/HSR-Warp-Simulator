@@ -74,14 +74,18 @@
 					<div class="bonus-item undying star{undyingType === 'embers' ? 4 : 5}">
 						<div class="icon">
 							<Icon type={undyingType} style="width:70%" />
-							<caption> ×{undyingQty}</caption>
+							<table>
+								<caption>{`×${undyingQty}`}</caption>
+							  </table>							    
 						</div>
 					</div>
 					{#if eidolon}
 						<div class="bonus-item eidolon star{rarity}">
 							<div class="icon">
 								<Icon type="eidolon{rarity}" style="width:70%" />
+								<table>
 								<caption> ×1</caption>
+							</table>
 							</div>
 						</div>
 					{/if}

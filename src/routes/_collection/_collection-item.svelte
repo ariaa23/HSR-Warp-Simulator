@@ -30,6 +30,7 @@
 	};
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="item-container star{rarity}" on:mousedown={handleClik}>
 	{#if !combatType}
 		<div class="lightcone">
@@ -42,29 +43,33 @@
 	<div class="frame" class:notowned={!isOwned}>
 		<div class="icon-info">
 			{#if combatType}
+				<!-- svelte-ignore element_invalid_self_closing_tag -->
 				<span> <i class="hsr-{combatType} {combatType} icon-gradient" /> </span>
 			{/if}
+			<!-- svelte-ignore element_invalid_self_closing_tag -->
 			<span><i class="hsr-{path}" /> </span>
 		</div>
 		{#if qty > 1}
 			<span class="qty">{getQty(qty)}</span>
 		{/if}
 
-		<caption>
+		<div class="character-caption">
 			<span class="name">{$t(name)}</span>
 			<div class="rarity">
-				{#each Array(rarity) as _}
-					<i class="hsr-star" />
-				{/each}
+			  {#each Array(rarity) as _}
+				<!-- svelte-ignore element_invalid_self_closing_tag -->
+				<i class="hsr-star" />
+			  {/each}
 			</div>
-		</caption>
-
+		  </div>
+		  
 		{#if !isOwned}
 			<div class="not-owned">
 				<span> {$t('collection.notOwned')} </span>
 			</div>
 		{/if}
 
+		<!-- svelte-ignore element_invalid_self_closing_tag -->
 		<div class="ornament" />
 	</div>
 </div>

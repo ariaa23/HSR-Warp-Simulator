@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { saveAs } from 'file-saver';
+	import * as FileSaver from 'file-saver';
 
 	import { APP_TITLE } from '$lib/data/site-setup.json';
 	import { initialAmount } from '$lib/data/warp-setup.json';
@@ -13,7 +13,6 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import ButtonIcon from '$lib/components/ButtonIcon.svelte';
 
-	export let blob;
 	export let isFirstTIme = false;
 	export let shareURL = '';
 
@@ -45,7 +44,7 @@
 
 	const saveHandler = () => {
 		playSfx('click2');
-		saveAs(blob, `HSR.WishSimulator.App - ${new Date().toLocaleString()}.png`);
+		FileSaver.saveAs(blob, `HSR.WishSimulator.App - ${new Date().toLocaleString()}.png`);
 		addFunds();
 	};
 
@@ -108,20 +107,31 @@
 			<button class="shareableLink" title="Copy Link" on:click={copyHandle}>
 				<span class="link"> {shareLink} </span>
 				<span class="icon">
+					<!-- svelte-ignore element_invalid_self_closing_tag -->
+					<!-- svelte-ignore element_invalid_self_closing_tag -->
 					<i class="hsr-clone" />
 				</span>
 			</button>
 		{/if}
 
 		<div class="social-button" transition:fade>
+				<!-- svelte-ignore element_invalid_self_closing_tag -->
 			{#if shareURL}
+				<!-- svelte-ignore a11y_consider_explicit_label -->
+				<!-- svelte-ignore a11y_consider_explicit_label -->
+				<!-- svelte-ignore a11y_consider_explicit_label -->
+				<!-- svelte-ignore a11y_consider_explicit_label -->
 				<button on:click={facebookHandle}> <i class="hsr-facebook" /> </button>
+				<!-- svelte-ignore a11y_consider_explicit_label -->
 				<button on:click={twitterHandle}> <i class="hsr-twitter" /> </button>
 				<!-- <button on:click={pinterestHandle}> <i class="hsr-pinterest" /> </button> -->
 				{#if navigator.share}
+					<!-- svelte-ignore a11y_consider_explicit_label -->
 					<button on:click={webShareHandle}> <i class="hsr-dot-3" /> </button>
 				{/if}
 			{/if}
+			<!-- svelte-ignore element_invalid_self_closing_tag -->
+			<!-- svelte-ignore a11y_consider_explicit_label -->
 			<button on:click={saveHandler}> <i class="hsr-save" /> </button>
 		</div>
 

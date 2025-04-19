@@ -40,8 +40,11 @@
 						<span> {bannerTitle} </span>
 					</h1>
 					<div class="time">
+						<!-- svelte-ignore element_invalid_self_closing_tag -->
 						<i class="hsr-time" />
-						<caption>{$t('warp.duration')}</caption>
+						<table>
+							<caption>{$t('warp.duration')}</caption>
+						  </table>						  
 					</div>
 					<div class="description">
 						<p>{@html $t('warp.warpDescription')}</p>
@@ -95,9 +98,11 @@
 		<div class="character" transition:fade|local>
 			<div class="char-group" style={characterOffset(featured, 'textOffset')}>
 				<div class="name">
+					<!-- svelte-ignore element_invalid_self_closing_tag -->
 					<i class="hsr-{combat_type} icon-gradient {combat_type}" />
 					<span>{$t(featured)}</span>
 				</div>
+					<!-- svelte-ignore element_invalid_self_closing_tag -->
 				<div class="stars">
 					{#each Array(5) as _} <i class="hsr-star" />{/each}
 				</div>

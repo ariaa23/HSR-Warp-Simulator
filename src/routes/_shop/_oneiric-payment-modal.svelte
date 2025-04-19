@@ -48,6 +48,7 @@
 	};
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="modal" on:mousedown|self={closeModal} transition:fade={{ duration: 200 }}>
 	<div class="container" transition:fly={{ y: 20, duration: 250 }}>
 		<div class="header">
@@ -67,8 +68,10 @@
 				<div class="price">{data.price}</div>
 			</div>
 
-			<caption>{$t('shop.selectMethod')}</caption>
+			<h3>{$t('shop.selectMethod')}</h3>
+			
 			<div class="payment-method">
+			
 				{#each payMethod as method}
 					<div class="method">
 						<button on:click={() => selectMethod(method)} class:active={activeMethod === method}>

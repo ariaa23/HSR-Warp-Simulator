@@ -67,80 +67,76 @@
 	};
 </script>
 
-<section class={banner}>
-	<div
-		class="wrap"
-		class:fit
-		class:inEdit={$probEdit}
-		style="--bw:{bannerWidth}px;"
-		class:shadow={banner !== 'starter'}
-		bind:clientWidth={bannerWidth}
-		in:slideIn|local={{ fade: banner === 'starter' }}
-		out:slideOut|local
-	>
-		{#if banner === 'starter'}
-			<BnStarter />
-			<div class="frame">
-				<StarterFrame />
-			</div>
-
-			<!-- Regular -->
-		{:else if banner === 'regular'}
-			<BnRegular />
-			<div class="frame">
-				<RegularFrame />
-			</div>
-
-			<!-- Character -->
-		{:else if banner === 'character-event'}
-			<BnCharacter {item} />
-			<div class="frame">
-				<CharacterFrame
-					event2={bannerIndex > 1 || (!$showStarterBanner && bannerIndex > 0)}
-					{item}
-				/>
-			</div>
-
-			<!-- Lightcone -->
-		{:else if banner === 'lightcone-event'}
-			<BnLightcone {item} />
-			<div class="frame">
-				<LightconeFrame
-					{item}
-					event2={bannerIndex > 3 || (!$showStarterBanner && bannerIndex > 2)}
-				/>
-			</div>
-		{/if}
-
-		<!-- Probability Controller -->
-		{#if !fullscreen}
-			<div class="prob-manager {banner}" class:inEdit={$probEdit}>
-				{#if $probEdit && banner !== 'starter'}
-					<ProbabilityEditor {banner} />
-				{/if}
-			</div>
-		{/if}
-	</div>
-</section>
-
-<!-- Probability Controller  Fullscreen -->
-{#if fullscreen}
-	<div class="prob-manager fullscreen {banner}" class:inEdit={$probEdit}>
-		{#if $probEdit && banner !== 'starter'}
-			<ProbabilityEditor fullscreen {banner} />
-		{/if}
-	</div>
-{/if}
-
-{#if showModalReset}
-	<Modal title="Back to Default" on:cancel={cancelModal} on:confirm={confirmModal}>
-		<div class="modal-content">
-			<p>
-				{@html $t('editor.resetPrompt', { values: { banner: $t(`banner.${banner}`) } })}
-			</p>
+<!-- potongan <script> tidak diubah, hanya bagian HTML-nya -->
+	<section class={banner}>
+		<div
+			class="wrap"
+			class:fit
+			class:inEdit={$probEdit}
+			style="--bw:{bannerWidth}px;"
+			class:shadow={banner !== 'starter'}
+			bind:clientWidth={bannerWidth}
+			in:slideIn|local={{ fade: banner === 'starter' }}
+			out:slideOut|local
+		>
+			{#if banner === 'starter'}
+				<BnStarter></BnStarter>
+				<div class="frame">
+					<StarterFrame></StarterFrame>
+				</div>
+	
+			{:else if banner === 'regular'}
+				<BnRegular></BnRegular>
+				<div class="frame">
+					<RegularFrame></RegularFrame>
+				</div>
+	
+			{:else if banner === 'character-event'}
+				<BnCharacter {item}></BnCharacter>
+				<div class="frame">
+					<CharacterFrame
+						event2={bannerIndex > 1 || (!$showStarterBanner && bannerIndex > 0)}
+						{item}
+					></CharacterFrame>
+				</div>
+	
+			{:else if banner === 'lightcone-event'}
+				<BnLightcone {item}></BnLightcone>
+				<div class="frame">
+					<LightconeFrame
+						{item}
+						event2={bannerIndex > 3 || (!$showStarterBanner && bannerIndex > 2)}
+					></LightconeFrame>
+				</div>
+			{/if}
+	
+			{#if !fullscreen}
+				<div class="prob-manager {banner}" class:inEdit={$probEdit}>
+					{#if $probEdit && banner !== 'starter'}
+						<ProbabilityEditor {banner}></ProbabilityEditor>
+					{/if}
+				</div>
+			{/if}
 		</div>
-	</Modal>
-{/if}
+	</section>
+	
+	{#if fullscreen}
+		<div class="prob-manager fullscreen {banner}" class:inEdit={$probEdit}>
+			{#if $probEdit && banner !== 'starter'}
+				<ProbabilityEditor fullscreen {banner}></ProbabilityEditor>
+			{/if}
+		</div>
+	{/if}
+	
+	{#if showModalReset}
+		<Modal title="Back to Default" on:cancel={cancelModal} on:confirm={confirmModal}>
+			<div class="modal-content">
+				<p>
+					{@html $t('editor.resetPrompt', { values: { banner: $t(`banner.${banner}`) } })}
+				</p>
+			</div>
+		</Modal>
+	{/if}	
 
 <style>
 	section {

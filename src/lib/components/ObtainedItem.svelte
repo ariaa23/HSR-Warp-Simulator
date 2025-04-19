@@ -14,6 +14,7 @@
 	onMount(() => playSfx('item-obtained'));
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <section in:fade={{ duration: 250 }} on:mousedown={closeObtained}>
 	<div class="container" bind:clientWidth={width} style="--wd:{width}px">
 		<div class="top" in:fly={{ y: 30, duration: 500, easing: bezier(0.13, 0.14, 0, 1) }}>
@@ -77,14 +78,20 @@
 					</picture>
 					<span class="star">
 						{#each Array(5) as _}
+							<!-- svelte-ignore element_invalid_self_closing_tag -->
 							<i class="hsr-star" />
 						{/each}
 					</span>
 					<span class="qty">{qty}</span>
-				</div>
-				<caption in:fade={{ duration: 250 }}> {$t(`item.${item}`)} </caption>
-			</div>
-		</div>
+</div>
+
+<p in:fade={{ duration: 250 }}>
+  {$t(`item.${item}`)}
+</p>
+
+</div>
+</div>
+
 
 		<div class="bottom">
 			{$t('clickToClose')}

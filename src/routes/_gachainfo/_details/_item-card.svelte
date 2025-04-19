@@ -27,10 +27,12 @@
 		{/if}
 
 		<div class="icon">
+			<!-- svelte-ignore element_invalid_self_closing_tag -->
 			<i class="hsr-{combat_type} {combat_type} icon-gradient" />
 		</div>
-		<caption> {$t(name)} </caption>
-	</div>
+		<div class="char-name">{$t(name)}</div>
+		</div>
+		
 </div>
 
 <style>

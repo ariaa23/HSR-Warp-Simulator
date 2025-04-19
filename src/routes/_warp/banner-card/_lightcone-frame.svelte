@@ -28,25 +28,26 @@
 	{/if}
 
 	{#if !$probEdit}
-		<!-- Left Pane -->
-		<div class="wrapper-info" out:fade|local>
-			<div class="info-body" in:fade={{ delay: 250, duration: 1000 }}>
-				<div class="short-detail">
-					<h1>
-						<span> {$t(`banner.${item.bannerName}`)} </span>
-					</h1>
-					<div class="time">
-						<i class="hsr-time" />
-						<caption> {$t('warp.duration')}</caption>
-					</div>
-					<div class="description">
-						<p>{@html $t('warp.warpDescription')}</p>
-						<p>{$t('warp.itemRateBoost', { values: { itemtype: $t('lightcone') } })}</p>
-					</div>
-				</div>
-				<RateupLightones {lightcones} />
+<!-- Left Pane -->
+<div class="wrapper-info" out:fade|local>
+	<div class="info-body" in:fade={{ delay: 250, duration: 1000 }}>
+		<div class="short-detail">
+			<h1>
+				<span>{$t(`banner.${item.bannerName}`)}</span>
+			</h1>
+			<div class="time">
+				<!-- svelte-ignore element_invalid_self_closing_tag -->
+				<i class="hsr-time" />
+				<span class="duration-text">{$t('warp.duration')}</span>
+			</div>
+			<div class="description">
+				<p>{@html $t('warp.warpDescription')}</p>
+				<p>{$t('warp.itemRateBoost', { values: { itemtype: $t('lightcone') } })}</p>
 			</div>
 		</div>
+		<RateupLightones {lightcones} />
+	</div>
+</div>
 
 		<!-- Right Pane -->
 		<div class="item-name" transition:fade|local>
@@ -57,6 +58,7 @@
 				<div class="name">{$t(item.featured)}</div>
 				<span class="stars">
 					{#each Array(5) as _}
+						<!-- svelte-ignore element_invalid_self_closing_tag -->
 						<i class="hsr-star" />
 					{/each}
 				</span>

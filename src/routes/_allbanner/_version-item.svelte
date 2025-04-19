@@ -80,14 +80,15 @@
 				{#if locked}
 					<div class="lock">
 						<span>
+							<!-- svelte-ignore element_invalid_self_closing_tag -->
 							<i class="hsr-lock" style="transform:translateY(15%); display:inline-block" /> Locked
 						</span>
 					</div>
 				{/if}
 			</div>
-			<caption>
+			<p class="featured-char">
 				{featuredChar}
-			</caption>
+			  </p>			  
 		</button>
 	</div>
 {/key}
