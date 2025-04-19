@@ -6,9 +6,16 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	kit: {
 		appDir: 'internal',
-		adapter: adapter(),
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: null
+		}),
 		alias: {
 			'@image': path.resolve('./src/post')
+		},
+		paths: {
+			base: process.env.NODE_ENV === 'production' ? '/HSR-Warp-Simulator' : ''
 		}
 	},
 	preprocess: preprocess({ postcss: true })
